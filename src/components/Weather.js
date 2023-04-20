@@ -82,7 +82,14 @@ const Weather = () => {
         <Fragment>
             <div className='w-full h-screen bg-gradientBg bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0'>
             {/* form */}
-                <form>form</form>
+                <form className='h-16 bg-black/30 w-full max-w-[450px] rounded-full backdrop-blur-[32px] mb-8'>
+                    <div className='h-full relative flex items-center justify-between p-2'>
+                        <input type="text" className='flex-1 bg-transparent outline-none placeholder:text-white text-white text-[15px] font-light pl-6 h-full' placeholder='search by city or country'/>
+                        <button className='bg-[#1ab8eb] hover:bg-[#15abdd] w-20 h-12 flex rounded-full felx justify-center items-center transition'>
+                            <IoMdSearch className='text-2xl text-white'/>
+                        </button>
+                    </div>
+                </form>
             {/* card */}
                 <div className='w-full bg-black/20 max-w-[450px] min-h-[584px] text-white backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
                     <div>
@@ -124,17 +131,54 @@ const Weather = () => {
                         
                       </div>
                       {/* card bottom */}
-                      <div>
-                        <div className='flex items-center gap-x-2'>
-                            {/* icon */}
-                            <div className='text-[20px]'>
-                                <BsEye></BsEye>
+                        <div className='max-w-[378px] max-auto flex flex-col gap-y-6'>
+                            <div className='flex justify-between'>
+                                <div className='flex items-center gap-x-2'>
+                                    {/* icon */}
+                                    <div className='text-[20px]'>
+                                        <BsEye></BsEye>
+                                    </div>
+                                    <div>
+                                        Visibility <span className='ml-2'>{data.visibility / 1000} km</span>
+                                    </div>
+                                </div>
+
+                                <div className='flex items-center gap-x-2'>
+                                    {/* icon */}
+                                    <div className='text-[20px]'>
+                                        <BsThermometer></BsThermometer>
+                                    </div>
+                                    <div className='flex'>
+                                        Feels like
+                                        <div className='flex ml-2'>
+                                            {parseInt(data.main.feels_like)}
+                                            <TbTemperatureCelsius></TbTemperatureCelsius>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                Visibility <span className='ml-2'>{data.visibility / 1000} km</span>
+                            <div className='flex justify-between'>
+                                <div className='flex items-center gap-x-2'>
+                                    {/* icon */}
+                                    <div className='text-[20px]'>
+                                        <BsWater></BsWater>
+                                    </div>
+                                    <div>
+                                        Humidity<span className='ml-2'>{data.main.humidity} %</span>
+                                    </div>
+                                </div>
+
+                                <div className='flex items-center gap-x-2'>
+                                    {/* icon */}
+                                    <div className='text-[20px]'>
+                                        <BsWind></BsWind>
+                                    </div>
+                                    <div className='ml-2'>
+                                       Wind <span>{data.wind.speed} m/s</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                      </div>
                     </div>
                 </div>
             </div>
